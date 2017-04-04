@@ -8,7 +8,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
-#include <iomanip> 
+#include <iomanip>
 
 #include "a02ex00.hpp"
 #include "a02ex01_a.hpp"
@@ -29,7 +29,7 @@ MyBooleanClass * verboseMode       = NULL;
 MyBooleanClass * shortMessageMode  = NULL;
 
 vector<Food *> myMainList;
-   
+
 int main(int argc, char* argv[])
    {
    verifyArguments(argc, argv);
@@ -45,11 +45,11 @@ void process()
    vector<string> opcoes({ "Exit", "List Database", "Insert Items" });
    Menu menu("Main Menu", opcoes);
    int escolha = -1;
-   
+
    while(escolha)
       {
       escolha = menu.getEscolha();
- 
+
       switch(escolha)
          {
  	 case 1: { listItems();    }; break;
@@ -63,7 +63,7 @@ void clearAll()   // está errada ! corrigir !!!!
    myMainList.clear();
 
    vector<Food *>::iterator scan = myMainList.begin();
-   
+
    while(scan != myMainList.end())
       {
       delete (*scan);
@@ -80,10 +80,10 @@ void clearAll()   // está errada ! corrigir !!!!
 void listItems()
    {
    double total = 0.00;
-      
+
    cout << "------------------------------\nItems in Database:\n------------------------------\n";
    vector<Food *>::iterator scan = myMainList.begin();
-   
+
    while(scan != myMainList.end())
       {
       cout << "  @ " << setw(20) << (*scan)->getDescricao() << "\n\tUS$ " << fixed << setprecision(2) << (*scan)->getValor() << endl;
@@ -96,23 +96,23 @@ void listItems()
 void insertItems()
    {
    cout << "------------------------------\nInset New Items:\n------------------------------\n";
-  
+
    Menu menu("Insert Items", { "Exit", "Bread", "Cheese", "Cottage Cheese", "Cracker", "Filled Wafer", "Ham", "Mortadella" });
    int escolha = -1;
-   
+
    while(escolha)
       {
       escolha = menu.getEscolha();
- 
+
       switch(escolha)
          {
- 	 case 1: { insertBread();       }; break;
- 	 case 2: { insertCheese();      }; break;
+ 	 case 1: { insertBread();        }; break;
+ 	 case 2: { insertCheese();       }; break;
  	 case 3: { insertCottageCheese();}; break;
- 	 case 4: { insertCracker();     }; break;
- 	 case 5: { insertFilledWafer(); }; break;
- 	 case 6: { insertHam();         }; break;
- 	 case 7: { insertMortadella();  }; break;
+ 	 case 4: { insertCracker();      }; break;
+ 	 case 5: { insertFilledWafer();  }; break;
+ 	 case 6: { insertHam();          }; break;
+ 	 case 7: { insertMortadella();   }; break;
          };
       };
    };
@@ -130,13 +130,13 @@ void insertBread()
    cout << "Weight ....: "; getline(cin, buffer); weight = stof(buffer);
    cout << "Cost ......: "; getline(cin, buffer); cost   = stod(buffer);
    cin.clear();
-   
+
    bread = new Bread(type, weight,cost);
    myMainList.insert(myMainList.end(), bread);
-   
-   cout << endl << bread->getDescricao() << " - US$ " << fixed << setprecision(2) << bread->getValor() << endl;   
+
+   cout << endl << bread->getDescricao() << " - US$ " << fixed << setprecision(2) << bread->getValor() << endl;
    };
-   
+
 void insertCracker()
    {
    Cracker * cracker;
@@ -150,11 +150,11 @@ void insertCracker()
    cout << "Amount ....: "; getline(cin, buffer); amount = stoi(buffer);
    cout << "Cost ......: "; getline(cin, buffer); cost   = stod(buffer);
    cin.clear();
-   
+
    cracker = new Cracker(type, amount,cost);
    myMainList.insert(myMainList.end(), cracker);
-   
-   cout << endl << cracker->getDescricao() << " - US$ " << fixed << setprecision(2) << cracker->getValor() << endl;   
+
+   cout << endl << cracker->getDescricao() << " - US$ " << fixed << setprecision(2) << cracker->getValor() << endl;
    };
 
 void insertFilledWafer()
@@ -167,16 +167,16 @@ void insertFilledWafer()
    double cost;
 
    cout << "------------------------------\nInsert Filled Wafer:\n------------------------------\n";
-   cout << "Type ......: "; getline(cin, type); 
+   cout << "Type ......: "; getline(cin, type);
    cout << "Filling ...: "; getline(cin, filling);
    cout << "Amount ....: "; getline(cin, buffer); amount = stoi(buffer);
    cout << "Cost ......: "; getline(cin, buffer); cost   = stod(buffer);
    cin.clear();
-   
+
    filledWafer = new FilledWafer(type, filling, amount,cost);
    myMainList.insert(myMainList.end(), filledWafer);
-   
-   cout << endl << filledWafer->getDescricao() << " - US$ " << fixed << setprecision(2) << filledWafer->getValor() << endl;   
+
+   cout << endl << filledWafer->getDescricao() << " - US$ " << fixed << setprecision(2) << filledWafer->getValor() << endl;
    };
 
 void insertCheese()
@@ -198,22 +198,24 @@ void insertCheese()
 
    cout << endl << cheese->getDescricao() << " - US$ " << fixed << setprecision(2) << cheese->getValor() << endl;
 };
-  
+
    void insertCottageCheese()
    {
    CottageCheese * cottage_cheese;
    string buffer;
    string type;
+   string brand;
    float  weight;
    double cost;
 
    cout << "------------------------------\nInsert Cottage Cheese:\n------------------------------\n";
    cout << "Type ......: "; getline(cin, buffer); type   = buffer;
+   cout << "Brand .....: "; getline(cin, brand);
    cout << "Weight ....: "; getline(cin, buffer); weight = stof(buffer);
    cout << "Cost ......: "; getline(cin, buffer); cost   = stod(buffer);
    cin.clear();
 
-   cottage_cheese = new CottageCheese(type, weight,cost);
+   cottage_cheese = new CottageCheese(type, brand,weight,cost);
    myMainList.insert(myMainList.end(), cottage_cheese);
 
    cout << endl << cottage_cheese->getDescricao() << " - US$ " << fixed << setprecision(2) << cottage_cheese->getValor() << endl;
@@ -226,7 +228,7 @@ void insertHam()
    string type;
    float  weight;
    double cost;
-	
+
    cout << "------------------------------\nInsert Ham:\n------------------------------\n";
    cout << "Type ......: "; getline(cin, buffer); type   = buffer;
    cout << "Weight ....: "; getline(cin, buffer); weight = stof(buffer);
@@ -246,7 +248,7 @@ void insertMortadella()
    string type;
    float  weight;
    double cost;
-	
+
    cout << "------------------------------\nInsert Mortadella:\n------------------------------\n";
    cout << "Type ......: "; getline(cin, buffer); type   = buffer;
    cout << "Weight ....: "; getline(cin, buffer); weight = stof(buffer);
@@ -263,18 +265,18 @@ void insertMortadella()
 
 void verifyArguments(int argc, char* argv[])
    {
-   if(verboseMode)                     { delete verboseMode;         }; 
-   if(shortMessageMode)                { delete shortMessageMode;    };  
+   if(verboseMode)                     { delete verboseMode;         };
+   if(shortMessageMode)                { delete shortMessageMode;    };
 
    verboseMode      = NULL;
    shortMessageMode = NULL;
-   
+
    for(int count = 1; count < argc; count++)
       {
       if(string(argv[count]) == "-v") { verboseMode      = new MyBooleanClass(true); };
       if(string(argv[count]) == "-s") { shortMessageMode = new MyBooleanClass(true); };
       };
-   
+
    if(!verboseMode)                    { verboseMode      = new MyBooleanClass();     };  // default is false
    if(!shortMessageMode)               { shortMessageMode = new MyBooleanClass();     };  // default is false
    }
