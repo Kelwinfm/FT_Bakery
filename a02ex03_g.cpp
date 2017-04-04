@@ -1,19 +1,17 @@
 #include <string>
-#include "a02ex03_b.hpp"
 #include "a02ex03_f.hpp"
 #include "a02ex03_g.hpp"
 
 using namespace std;
 
-CottageCheese::CottageCheese(string tipo, float peso, double valor) : Food(valor)
+CottageCheese::CottageCheese(string tipo, string marca, float peso, double valor) : Cheese(tipo, peso,valor)
    {
-   this->tipo = tipo;
-   this->peso = peso;
+    this->marca = marca;
    };
 
 string CottageCheese::getDescricao()
    {
-   return ("Cottage Cheese " + tipo + " - " + to_string(peso) + " Kg.");
+   return ("Cottage Cheese marca " + marca + " - " + Cheese::getDescricao());
    };
 
 /* fim de arquivo */
