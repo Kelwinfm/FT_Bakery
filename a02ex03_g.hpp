@@ -2,22 +2,21 @@
    #define A02EX03_G_H
 
 #include <string>
-#include "a02ex03_b.hpp"
 #include "a02ex03_f.hpp"
 
 
-class CottageCheese : public Food
+class CottageCheese : public Cheese
 	{
 	private:
-	string tipo;
-	float peso;
+        	string marca;
 
 	public:
-	CottageCheese(string, float, double);
-	virtual string getDescricao();
+		CottageCheese(string,string, float, double);
+		virtual string getDescricao();
 	};
 
 
 #endif
 
 /* fim de arquivo */
+
