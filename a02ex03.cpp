@@ -1,3 +1,4 @@
+
 /* Unicamp - Universidade Estadual de Campinas
    FT - Faculdade de Tecnologia
    Limeira - SP
@@ -23,22 +24,9 @@
 #include "a02ex03_h.hpp"
 #include "a02ex03_i.hpp"
 
-/* DANGER: A LOT OF GLOBAL VARIABLES !!! (OBJECTS & STRUCTURES) */
+verifyArguments(argc, argv);
 
-MyBooleanClass * verboseMode       = NULL;
-MyBooleanClass * shortMessageMode  = NULL;
-
-vector<Food *> myMainList;
-
-int main(int argc, char* argv[])
-   {
-   verifyArguments(argc, argv);
-   myMainList.clear();
-   Information::wellcome("C++ Program " + string(argv[0]) + " running!", shortMessageMode->getStatus());
-   process();
-   Information::bye(shortMessageMode->getStatus());
-   clearAll();
-   };
+MyProgram::start();
 
 void process()
    {
