@@ -24,6 +24,7 @@ class MyProgram
         void set.verboseMode();
         void get.shortMessageMode();
         void set.shortMessageMode();
+        void verifyArguments(int, char* []);
 
         void start()
         {
@@ -52,7 +53,7 @@ class MyProgram
 
 };
 
-    void verifyArguments(int, char* []);
+    
 
 
 #endif
