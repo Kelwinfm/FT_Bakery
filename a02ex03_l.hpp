@@ -4,17 +4,17 @@
 #include <string>
 #include "a02ex03_b.hpp"
 #include "a02ex03_j.hpp"
-#include "a02ex03_m.hpp"
+#include "a02ex03_l.hpp"
 
 using namespace std;
 
-class Soda : public Liquid
+class Water : public Liquid
 {
 private:
     string type;
 
 public:
-    Soda(string,float,double);
+    Water(string,float,double);
     virtual string getDescricao();
 };
 
